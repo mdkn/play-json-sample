@@ -8,6 +8,7 @@ class BucketFormatSpec extends PlaySpec {
   "BucketFormatSpec" should {
     "format object to json" in {
       val bucketValue = BucketValue(
+        label = "My bucket",
         AppleValue("Sweet apple", "Red"),
         OrangeValue("Bitter orange", "Green"),
         GrapeValue("Sour Grape", "Lime green")
@@ -17,12 +18,12 @@ class BucketFormatSpec extends PlaySpec {
       val result: JsValue = Json.toJson(bucketValue)
 
       result.toString.mustBe(
-        "{\"appleValue\":{\"name\":\"Sweet apple\",\"color\":\"Red\"},\"orangeValue\":{\"name\":\"Bitter orange\",\"color\":\"Green\"},\"grapeValue\":{\"name\":\"Sour Grape\",\"color\":\"Lime green\"}}"
+        "{\"label\":\"My bucket\",\"appleValue\":{\"name\":\"Sweet apple\",\"color\":\"Red\"},\"orangeValue\":{\"name\":\"Bitter orange\",\"color\":\"Green\"},\"grapeValue\":{\"name\":\"Sour Grape\",\"color\":\"Lime green\"}}"
       )
     }
     "format json to object" in {
       val json =
-        "{\"appleValue\":{\"name\":\"Sweet apple\",\"color\":\"Red\"},\"orangeValue\":{\"name\":\"Bitter orange\",\"color\":\"Green\"},\"grapeValue\":{\"name\":\"Sour Grape\",\"color\":\"Lime green\"}}"
+        "{\"label\":\"My bucket\",\"appleValue\":{\"name\":\"Sweet apple\",\"color\":\"Red\"},\"orangeValue\":{\"name\":\"Bitter orange\",\"color\":\"Green\"},\"grapeValue\":{\"name\":\"Sour Grape\",\"color\":\"Lime green\"}}"
       import BucketFormat._
 
       val result: JsResult[BucketValue] =
@@ -34,6 +35,7 @@ class BucketFormatSpec extends PlaySpec {
         // Wrapping by JsSuccess to match the expected type.
         JsSuccess(
           BucketValue(
+            label = "My bucket",
             AppleValue("Sweet apple", "Red"),
             OrangeValue("Bitter orange", "Green"),
             GrapeValue("Sour Grape", "Lime green")

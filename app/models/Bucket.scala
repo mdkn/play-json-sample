@@ -1,6 +1,6 @@
 package models
 
-case class Bucket(apple: Apple, orange: Orange, grape: Grape)
+case class Bucket(label: String, apple: Apple, orange: Orange, grape: Grape)
 
 sealed trait Fruit {
   val name: String
