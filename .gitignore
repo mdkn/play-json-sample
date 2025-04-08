@@ -1,0 +1,11 @@
+logs
+target
+/.bsp
+/.g8
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+hs_err_pid*
