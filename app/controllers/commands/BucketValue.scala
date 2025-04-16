@@ -12,7 +12,7 @@ case class BucketValue(
 object BucketValue {
   def apply(m: Bucket): BucketValue = BucketValue(
     label = m.label,
-    appleValue = AppleValue(m.apple),
+    appleValue = AppleValue.apply(m.apple),
     orangeValue = OrangeValue.apply(m.orange),
     grapeValue = GrapeValue.apply(m.grape)
   )
